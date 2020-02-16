@@ -38,6 +38,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+
+        // validation
+
+        $rslt = $request->validate([
+            "name" => "required|min:2|max:191|unique:categories",
+            
+        ]);
+
         $cat=new category();
         if($request->has('name')){
             $cat->name=$request->input('name');

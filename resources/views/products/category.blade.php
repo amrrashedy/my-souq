@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('categories')
+@section('content')
        <!-- Page Heading -->
        <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Categrories</h1>
@@ -36,7 +36,13 @@
                   <input name="name" type="text" class="form-control form-control-user mt-3"  placeholder="Enter Cat Name..."
                   @if (session()->has('cat'))
                   value='{{session()->get('cat')->name}}'
+                  @else value='{{ old('name')}}'
                   @endif>
+                  @error("name")
+                  <span style="color:red">{{$message}}  
+                    {{-- characters you entered {{old('name')}} --}}
+                  </span>
+                  @enderror
                 </div>
               
               
@@ -84,6 +90,9 @@
                   @if (session()->has('sub_cat'))
                   value='{{session()->get('sub_cat')->name}}'
                   @endif>
+                  @error('name')
+                  {{$message}}
+                  @enderror
                 </div>
               
 
@@ -101,7 +110,11 @@
                     @empty
                     <option>No Category</option>
                     @endforelse
+                    {{-- <option value="3">Test</option> --}}
                   </select>
+                  @error('category')
+                  {{$message}}
+                  @enderror
                 </div>
                 
                 <button type="submit" class="btn btn-primary btn-user btn-block">

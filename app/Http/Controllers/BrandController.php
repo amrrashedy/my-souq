@@ -43,22 +43,22 @@ class BrandController extends Controller
     {
         
 
-        
-           
-         //  Storage::put("brands",$request->input('img'));
-         $file=Storage::disk('public')->put("/images/brands",$request->file('img'));
+        $rslt = $request->validate([
+            "name" => "required|min:2|max:191|unique:brands",
+            "img"=>"nullable|image"
+            
+        ]);
+
+
+
+        if ($request->has('img')){
+            $file=Storage::disk('public')->put("/images/brands",$request->file('img'));
+            brand::create(["name"=>$request->input('name'),"img"=>$file]);
+        }        else{
+            brand::create(["name"=>$request->input('name')]);
+        }    
       
-         // this return file path
-        //  dd($file);
-         brand::create(["name"=>$request->input('name'),"img"=>$file]);
-           
-
-         // anther way to store image by store function
-        //  brand::create(["name"=>$request->input('name'),"img"=>$request->file('img')
-        //  ->store('/images/brands')]);
-
-
-          return redirect()->back();
+        return redirect()->back();
 
     }
 

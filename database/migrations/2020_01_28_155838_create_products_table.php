@@ -22,26 +22,20 @@ class CreateProductsTable extends Migration
             $table->enum('status',['Available', 'Not Available', 'Not Available In Your Country']);
 
 
-            // $table->unsignedBigInteger('brand_id')->nullable();
-            // $table->foreign('brand_id')->
-            // references('id')
-            // ->on('brands');
+            $table->unsignedBigInteger('brand_id')->nullable();
+            $table->foreign('brand_id')->
+            references('id')
+            ->on('brands');
 
-            // $table->unsignedBigInteger('category_id')->nullable();
-            // $table->foreign('category_id')->
-            // references('id')
-            // ->on('categories');
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->foreign('category_id')->
+            references('id')
+            ->on('categories');
 
-            // $table->unsignedBigInteger('sub_category_id')->nullable();
-            // $table->foreign('sub_category_id')->
-            // references('id')
-            // ->on('sub_categories');
-
-
- 
-
-
-            
+            $table->unsignedBigInteger('sub_category_id')->nullable();
+            $table->foreign('sub_category_id')->
+            references('id')
+            ->on('sub_categories');            
 
             $table->timestamps();
         });

@@ -57,9 +57,8 @@
 
          
     
-         @yield('brands')
-         @yield('products')
-         @yield('categories')
+         @yield('content')
+      
 
 
 

@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('brands')
+@section('content')
        <!-- Page Heading -->
        <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Brands</h1>
@@ -21,7 +21,15 @@
       </div>
       <!-- Card Body -->
       <div class="card-body">
-
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $msg)
+                        <li>{{ $msg }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
         <form method="post" action="/brand/add" enctype="multipart/form-data">
           @csrf

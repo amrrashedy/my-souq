@@ -35,6 +35,11 @@ class SubCategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $rslt = $request->validate([
+            "name" => "required|min:2|max:191",
+            "category" =>"required|exists:categories,id"
+
+        ]);
         $sub_cat=new subCategory();
         $sub_cat->name=$request->input('name');
         $sub_cat->category_id=$request->input('category');
