@@ -115,13 +115,13 @@ class BrandController extends Controller
      * @param  \App\brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
+        $id = $request->id;
         $brand=brand::find($id);
         Storage::disk('public')->delete($brand->img);
 
         $brand->delete();
-       return redirect()->back();
-
+        return $brand;
     }
 }

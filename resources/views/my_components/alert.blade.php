@@ -23,7 +23,7 @@ data-target="#exampleModalLong{{$cat->id}}{{$a ?? ''}}">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-          <a type="button" class="btn btn-danger" href="{{$url_delete}}{{$cat->id}}">Yes</a>
+          <a type="button" class="btn btn-danger" href="{{$url_delete}}{{$cat->id}}" >Yes</a>
         </div>
       </div>
     </div>

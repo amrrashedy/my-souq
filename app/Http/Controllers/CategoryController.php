@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\category;
+use App\subCategory;
 use Illuminate\Http\Request;
 
 
@@ -116,5 +117,20 @@ class CategoryController extends Controller
         $cat->delete();
         return redirect()->back();
 
+    }
+
+
+    function get_sub_cats(Request $request)
+    {
+        if($request->has("category_id"))
+        {
+          //  return subCategory::where("category_id" ,$request->category_id)->get();
+
+            $cat =category::find($request->category_id);
+            return $cat->sub_categories_one_to_many;
+
+        }else {
+            return subCategory::all();
+        }
     }
 }

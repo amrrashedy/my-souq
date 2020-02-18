@@ -6,12 +6,8 @@
         <h1 class="h3 mb-0 text-gray-800">Brands</h1>
         {{-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> --}}
       </div>
-
      
-<div class="row">
-       
-
-
+<div class="row">      
   <div class="col-xl-5 col-lg-7">
     <div class="card shadow mb-4">
       <!-- Card Header - Dropdown -->
@@ -48,9 +44,6 @@
       </div>
     </div>
   </div>
-
-
-
   <div class="col-xl-7 col-lg-7">
     <div class="card shadow mb-4">
       <!-- Card Header - Dropdown -->
@@ -71,7 +64,7 @@
 
          </thead>
          @forelse (\App\Brand::all() as $brand)
-           <tr>
+        <tr id="row_{{$brand->id}}">
            <td>{{$loop->iteration}}</td>
            <td><img style="width:50px;hight:50px" src="{{asset('storage/'.$brand->img)}}"/></td>
            <td>{{$brand->name}}</td>
@@ -98,7 +91,7 @@
            <td>
              {{-- <a href="/brand/delete/{{$brand->id}}"><i class="fas fa-trash-alt"></i></a> --}}
               {{-- delete component --}}
-              @component('my_components.alert',["cat"=>$brand])
+              {{-- @component('my_components.alert',["cat"=>$brand])
               are you sure that you want to delete {{$brand->name}} Category ? 
               @slot('icon')
               fas fa-trash-alt
@@ -114,17 +107,15 @@
               @slot('img')
               {{asset('storage/'.$brand->img)}}
               @endslot 
-           @endcomponent
-          
+           @endcomponent --}}
+           <a  id="delete_brand_btn{{$brand->id}}" onclick="del_barnd({{$brand->id}})" class="fas fa-trash text-danger"></a>
           </td>
-
            </tr>
          @empty
               <tr>
              <td colspan="3">No Brand</td>
               </tr>
-         @endforelse
-      
+         @endforelse     
 
        </table>
 
@@ -140,5 +131,23 @@
 
 @endsection
 
+@section('script')
+<script>
+  function del_barnd(brand_id)
+  {
+    $.ajax({
+      type: "POST",
+      url : "/brand/delete/" ,
+      data: {"id" : brand_id ,"_token" :"{{csrf_token()}}"},
+      success :function (rslt)
+      {
+        //console.log(rslt);
+        $("#row_"+brand_id).fadeOut(2000);
+      }
+    });
+  }
 
+</script>
+    
+@endsection
 
