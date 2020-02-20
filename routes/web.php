@@ -47,7 +47,13 @@ Route::group(['prefix' => '/brand'], function () {
 
 Route::group(['prefix' => '/products'], function () {
     Route::get('/', 'ProductController@index');
+    Route::get('/add', 'ProductController@create');
     Route::post('/add', 'ProductController@store');  
+
+    Route::group(['prefix' => '/image'], function () {
+        Route::get('/add/{id}', 'ProductImageController@create');
+        
+    });
        
 });
 

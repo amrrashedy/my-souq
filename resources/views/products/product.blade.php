@@ -15,7 +15,7 @@
           <div class="card shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-              <h6 class="m-0 font-weight-bold text-primary">Add New Product</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Add New Product | <a href="/products">Show All Products</a></h6>
             
             </div>
             <!-- Card Body -->
@@ -31,7 +31,7 @@
                   </div>
               @endif
           
-              <form method="post" action="/products/add">
+              <form method="post" action="/products/add" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                 <div class="col-md-6">
@@ -59,6 +59,11 @@
                       {{-- <option>Not Available In Your Country</option> --}}
                     </select>
                   </div>
+
+                  <div class="form-group" >
+                    <label for="img">Image</label>
+                   <input type="file" name="image"  multiple class="form-control"/>
+                  </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
@@ -67,7 +72,7 @@
                       @forelse (\App\brand::all() as $row)
                     <option class="form-control form-control"    value="{{$row->id}}">{{$row->name}}</option>  
                       @empty
-                      <option>No Brand</option>
+                      <option value="">No Brand</option>
                       @endforelse                     
                     </select>
                   </div>

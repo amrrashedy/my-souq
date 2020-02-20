@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\product;
+use App\productImage;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -14,9 +15,12 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
-        return view('products.product');
+        //$products = product::get();
+        $products = product::orderBy("id" ,"desc")->paginate(20);
 
+        return view('products.show_all' )
+       // ->with("prods" , $products)
+       ->with(compact("products"));
     }
 
     /**
@@ -26,7 +30,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('products.product');
     }
 
     /**
@@ -41,17 +45,27 @@ class ProductController extends Controller
             "name" =>"required" ,
         ]);
 
-        //$request->all();
+        // dd($request->name);
+        //dd($request->input("name" ));
+        //  dd($request->input("namee"  ,"xxx"));
+        //dd($request->only(["name"  ,"qty"]));
+        //dd($request->except(["name"  ,"qty"]));
+        //dd($request->all());
+        //$product =   product::create($request->all());
+        $product =   product::create($request->except(["image"]));
+        //dd(       $product );
 
-        product::create($request->all());
+        $product_image = new productImage();
+
+        $product_image->image = $request->file("image")->store("/images/products") ;
+        $product_image->product_id =$product->id ;
+
+        $product_image->save();
+        return redirect()->back();
+    
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\product  $product
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(product $product)
     {
         //

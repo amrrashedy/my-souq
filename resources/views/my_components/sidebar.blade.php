@@ -36,7 +36,7 @@
       </div>
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="/products">
+        <a class="nav-link" href="/products/add">
           <i class="fab fa-product-hunt"></i>
           <span>Products</span></a>
       </li>
