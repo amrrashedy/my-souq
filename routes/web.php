@@ -57,14 +57,37 @@ Route::group(['prefix' => '/products'], function () {
        
 });
 
+// Route::get('/age/{age}', function ($age) {
+    
+//     echo "Welcome you age is $age";
+// })->middleware("check_age");
+// //->middleware( \App\Http\Middleware\TestMiddleware::class);
 
 
 
+
+// Route::group(['prefix' => '/check' , "middleware"=>"check_age"], function () {
+//     Route::get('/age/{age}', function ($age) {
+    
+//         echo "Welcome you age is $age";
+//     });
+//     Route::get('/gender/{age}',  function ($age) {
+    
+//         echo "Welcome you age is $age in check gender";
+//     });
+    
+// });
  
 
+// Route::get('/c/{age}',"TestAgeController@index");
+// Route::get('/c2/{age}',"TestAgeController@add");
 
 
 
 
 
+Route::get('/test', function () {
+    return view('test');
+ });
 
+ Route::get('/change/lang/{locale}', "LangController@change");

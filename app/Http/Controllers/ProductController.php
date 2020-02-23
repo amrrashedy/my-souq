@@ -61,8 +61,7 @@ class ProductController extends Controller
         $product_image->product_id =$product->id ;
 
         $product_image->save();
-        return redirect()->back();
-    
+        return redirect()->back();    
     }
 
 
