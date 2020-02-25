@@ -3,8 +3,7 @@
 return [
     
     "category" =>"الفئات",
-    "welcome" =>"مرحبا",
-    
+    "welcome" =>"مرحبا",    
     "dir" =>"rtl",
     "home" =>"الصفحة الرئيسية",
     "user" =>"المستخدم" ,

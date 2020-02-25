@@ -7,18 +7,20 @@ use Illuminate\Support\Facades\App;
 
 class LangController extends Controller
 {
-    function change($locale)
+    function change(Request $request)
     {
-        if ($locale == "ar")
-        {
-          //  App::setLocale("ar");
-          session()->put("locale" ,"ar");
-        }else {
-           // App::setLocale("en");
-           session()->put("locale" ,"en");
-        }
+     // var_dump( $request->xx ); 
+        // if ($request->locale == "ar")
+        // {
+        //   //App::setLocale("ar");
+        //   //app()->setLocale("ar");
+        //   session()->put("locale" ,"ar");
+        // }else {
+        // //  app()->setLocale("en");
+        //   session()->put("locale" ,"en");
+        // }
 
-        return redirect("/test");
+      return redirect()->back();
    //   echo config("app.locale");
      // echo trans("welcome");
     }

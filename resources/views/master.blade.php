@@ -1,5 +1,12 @@
+@php
+if (session()->has("locale"))
+{
+    app()->setLocale(session()->get("locale"));
+}
+   
+@endphp
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="@lang('data.dir')">
 
 <head>
 

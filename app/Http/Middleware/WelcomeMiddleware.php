@@ -18,7 +18,6 @@ class WelcomeMiddleware
         echo "<h1>Weclome</h1>";
         return $next($request);
     }
-
     public function terminate($request , $response)
     {
         echo "Good Bye";

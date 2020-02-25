@@ -78,16 +78,12 @@ Route::group(['prefix' => '/products'], function () {
     
 // });
  
-
 // Route::get('/c/{age}',"TestAgeController@index");
 // Route::get('/c2/{age}',"TestAgeController@add");
-
-
-
-
 
 Route::get('/test', function () {
     return view('test');
  });
 
- Route::get('/change/lang/{locale}', "LangController@change");
+ Route::get('/change/lang/{lang?}', "LangController@change");
+ 

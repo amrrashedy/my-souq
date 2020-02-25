@@ -1,0 +1,222 @@
+$ php artisan tinker
+Psy Shell v0.9.12 (PHP 7.3.7 — cli) by Justin Hileman
+>>> $c = App\Customer::find(1);
+=> App\Customer {#3038
+     id: 1,
+     name: "ahmed",
+     email: "ahmed@yahoo.com",
+     created_at: null,
+     updated_at: null,
+   }
+>>> $c->orders;
+=> Illuminate\Database\Eloquent\Collection {#3040
+     all: [
+       App\Order {#3042
+         id: 1,
+         customer_id: 1,
+         status: "pendding",
+         created_at: "2020-02-25 00:00:00",
+         updated_at: null,
+       },
+     ],
+   }
+>>> $c->orders;
+=> Illuminate\Database\Eloquent\Collection {#3040
+     all: [
+       App\Order {#3042
+         id: 1,
+         customer_id: 1,
+         status: "pendding",
+         created_at: "2020-02-25 00:00:00",
+         updated_at: null,
+       },
+     ],
+   }
+>>> $o = App\Order::find(1)
+=> App\Order {#3043
+     id: 1,
+     customer_id: 1,
+     status: "pendding",
+     created_at: "2020-02-25 00:00:00",
+     updated_at: null,
+   }
+>>> $o->order_details;
+=> null
+>>>
+NH@PC MINGW64 ~/Desktop/amr/my-souq (master)
+$ php artisan tinker
+Psy Shell v0.9.12 (PHP 7.3.7 — cli) by Justin Hileman
+>>> $o = App\Order::find(1)
+=> App\Order {#3038
+     id: 1,
+     customer_id: 1,
+     status: "pendding",
+     created_at: "2020-02-25 00:00:00",
+     updated_at: null,
+   }
+>>> $o->order_details;
+=> Illuminate\Database\Eloquent\Collection {#3042
+     all: [
+       App\OrderDetail {#3041
+         id: 1,
+         order_id: 1,
+         product_id: 1,
+         price: "100.00",
+         qty: 2,
+         created_at: null,
+         updated_at: null,
+       },
+       App\OrderDetail {#3032
+         id: 3,
+         order_id: 1,
+         product_id: 2,
+         price: "50.00",
+         qty: 3,
+         created_at: null,
+         updated_at: null,
+       },
+     ],
+   }
+>>>
+NH@PC MINGW64 ~/Desktop/amr/my-souq (master)
+$ php artisan tinker
+Psy Shell v0.9.12 (PHP 7.3.7 — cli) by Justin Hileman
+>>> $c = App\Customer::find(1);
+=> App\Customer {#3038
+     id: 1,
+     name: "ahmed",
+     email: "ahmed@yahoo.com",
+     created_at: null,
+     updated_at: null,
+   }
+>>> $c->order_details;
+=> Illuminate\Database\Eloquent\Collection {#3032
+     all: [
+       App\OrderDetail {#3047
+         id: 1,
+         order_id: 1,
+         product_id: 1,
+         price: "100.00",
+         qty: 2,
+         created_at: null,
+         updated_at: null,
+         laravel_through_key: 1,
+       },
+       App\OrderDetail {#3026
+         id: 3,
+         order_id: 1,
+         product_id: 2,
+         price: "50.00",
+         qty: 3,
+         created_at: null,
+         updated_at: null,
+         laravel_through_key: 1,
+       },
+     ],
+   }
+>>>
+NH@PC MINGW64 ~/Desktop/amr/my-souq (master)
+$ php artisan tinker
+Psy Shell v0.9.12 (PHP 7.3.7 — cli) by Justin Hileman
+>>> $c = App\Customer::find(1);
+=> App\Customer {#3038
+     id: 1,
+     name: "ahmed",
+     email: "ahmed@yahoo.com",
+     created_at: null,
+     updated_at: null,
+   }
+>>> $c->order_details;
+=> Illuminate\Database\Eloquent\Collection {#3032
+     all: [
+       App\OrderDetail {#3047
+         id: 1,
+         order_id: 1,
+         product_id: 1,
+         price: "100.00",
+         qty: 2,
+         created_at: null,
+         updated_at: null,
+         laravel_through_key: 1,
+       },
+       App\OrderDetail {#3026
+         id: 3,
+         order_id: 1,
+         product_id: 2,
+         price: "50.00",
+         qty: 3,
+         created_at: null,
+         updated_at: null,
+         laravel_through_key: 1,
+       },
+     ],
+   }
+>>>
+NH@PC MINGW64 ~/Desktop/amr/my-souq (master)
+$ php artisan tinker
+Psy Shell v0.9.12 (PHP 7.3.7 — cli) by Justin Hileman
+>>> $c = App\Customer::find(1);
+=> App\Customer {#3038
+     id: 1,
+     name: "ahmed",
+     email: "ahmed@yahoo.com",
+     created_at: null,
+     updated_at: null,
+   }
+>>> $c->order_details;
+Illuminate/Database/QueryException with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'orders.order_id' in 'field list' (SQL: select `order_details`.*, `orders`.`order_id` as
+ `laravel_through_key` from `order_details` inner join `orders` on `orders`.`id` = `order_details`.`customer_id` where `orders`.`order_id` = 1)'
+>>>
+NH@PC MINGW64 ~/Desktop/amr/my-souq (master)
+$ php artisan tinker
+Psy Shell v0.9.12 (PHP 7.3.7 — cli) by Justin Hileman
+>>> $o = App\Order::find(1)
+=> App\Order {#3038
+     id: 1,
+     customer_id: 1,
+     status: "pendding",
+     created_at: "2020-02-25 00:00:00",
+     updated_at: null,
+   }
+>>> $o->products;
+=> Illuminate\Database\Eloquent\Collection {#3039
+     all: [
+       App\product {#3046
+         id: 1,
+         name: "Accusamus deserunt nisi.",
+         description: "Quam sequi qui officiis quas. Eos omnis architecto provident facere ipsum quae fugit. Qui perferendis omnis quis est ducimus amet et. Eligendi delectus minima consectetu
+r qui cum vel ratione. Sed provident quia velit blanditiis autem id. Maxime voluptatem consequatur perferendis voluptatem at vero. Voluptatum temporibus excepturi ut ab blanditiis delectus.",
+         price: "541.00",
+         qty: 9,
+         status: "Available",
+         brand_id: null,
+         category_id: 8,
+         sub_category_id: 50,
+         created_at: "2020-02-20 16:54:18",
+         updated_at: "2020-02-20 16:54:18",
+         pivot: Illuminate\Database\Eloquent\Relations\Pivot {#3042
+           order_id: 1,
+           product_id: 1,
+         },
+       },
+       App\product {#3026
+         id: 2,
+         name: "Harum consequatur nemo odio.",
+         description: "Sequi blanditiis itaque sed ullam minus quo voluptatum. At itaque numquam magni sed. Est voluptatem quasi nihil ad quae qui consequatur. Ea vel quod sint beatae consequa
+tur doloremque consectetur vero. Reiciendis vitae incidunt asperiores voluptates. Quia minima et atque qui omnis similique.",
+         price: "8346.00",
+         qty: 8,
+         status: "Available",
+         brand_id: null,
+         category_id: 2,
+         sub_category_id: 43,
+         created_at: "2020-02-20 16:54:18",
+         updated_at: "2020-02-20 16:54:18",
+         pivot: Illuminate\Database\Eloquent\Relations\Pivot {#3044
+           order_id: 1,
+           product_id: 2,
+         },
+       },
+     ],
+   }
+>>>

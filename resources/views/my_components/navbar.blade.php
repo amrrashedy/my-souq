@@ -160,10 +160,26 @@
             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
             Profile
           </a>
-          <a class="dropdown-item" href="#">
+          <a class="dropdown-item" href="">
             <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-            Settings
+            @if (app()->getLocale() =="en")
+                عربي
+            @elseif (app()->getLocale() =="ar")
+                English
+            @endif
           </a>
+          @if (app()->getLocale() =="en")
+            <a class="dropdown-item" href="/change/lang/ar">
+              <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+              عربي
+            </a>
+          @else
+          <a class="dropdown-item" href="/change/lang/en">
+            <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+            English
+          </a> 
+          @endif
+          
           <a class="dropdown-item" href="#">
             <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
             Activity Log
