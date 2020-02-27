@@ -30,4 +30,10 @@ class product extends Model
         return  $this->hasMany("\App\productImage");
     }
 
+    function orders()
+    {
+        return $this->belongsToMany("App\Order" ,"order_details");
+    }
+
+
 }

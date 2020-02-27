@@ -10,4 +10,8 @@ class OrderDetail extends Model
     {
         return $this->belongsTo("App\Order");
     }
+    function  product()
+    {
+        return $this->belongsTo("App\product");
+    }
 }

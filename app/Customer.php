@@ -9,8 +9,7 @@ class Customer extends Model
     function orders()
     {
         return $this->hasMany("App\Order");
-    }
-    
+    }    
     function order_details()
     {
         return $this->hasManyThrough("App\OrderDetail" ,"App\Order");

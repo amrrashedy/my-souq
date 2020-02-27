@@ -87,3 +87,7 @@ Route::get('/test', function () {
 
  Route::get('/change/lang/{lang?}', "LangController@change");
  
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
