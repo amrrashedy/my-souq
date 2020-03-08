@@ -8,6 +8,7 @@ class product extends Model
 {
     protected $fillable =[ "name" ,   "price" ,"qty" ,   "status" ,  "brand_id" , "category_id" ,"sub_category_id" , "description"];
 
+    //protected $date =["deleted_at"];
     protected $attributes  =["status"=>"Available" ];
 
     function brand()
@@ -35,5 +36,19 @@ class product extends Model
         return $this->belongsToMany("App\Order" ,"order_details");
     }
 
+    // function getNameAttribute($value)
+    // {
+    //     return "Product : " .$value;
+    // }
+
+    public function getCreatedAtAttribute($value)
+    {
+        return \Carbon\Carbon::createFromTimeStamp(strtotime($value))->diffForHumans();
+    }
+
+    public function getUpdatedAtAttribute($value)
+    {
+        return \Carbon\Carbon::createFromTimeStamp(strtotime($value))->diffForHumans();
+    }
 
 }

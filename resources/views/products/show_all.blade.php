@@ -29,19 +29,22 @@
                                 <th>Category</th>
                                 <th>Sub Category</th>
                                 <th>Brand</th>
+                                <th>Created At</th>
                                 <th>&nbsp;</th>
                             </tr>
                         </thead>
                         <tbody>                            
                           @forelse ($products as $product)
                           <tr>
-                            <th>{{$loop->iteration}}</th>
+                            <th>{{$num++}}</th>
                             <th>{{$product->name}}</th>
                             <th>{{$product->qty}}</th>
                             <th>{{$product->price}}</th>
                             <th>{{($product->category)?$product->category->name:""}}</th>
                             <th>{{($product->sub_category)?$product->sub_category->name :""}}</th>
                             <th>{{($product->brand)?$product->brand->name :"No Brand"}}</th>
+                            <th>{{$product->created_at}}</th>
+                            {{-- <th>{{$product->created_at->format("Y-d-m")}}</th> --}}
                           <th><a href="/products/image/add/{{$product->id}}" class="fa fa-plus-circle" title="Add Image to Product {{$product->name}}"><span class="badge badge-pill">{{$product->product_images->count()}}</span></a></th>
                         </tr>
                           @empty

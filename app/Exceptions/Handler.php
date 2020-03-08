@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -46,6 +47,15 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return parent::render($request, $exception);
+
+        if ($exception instanceof QueryException)
+        {
+            session()->flash("qry_error_message" ,"QueryException");
+            return redirect()->back();
+          //    return  "Can't Delete this category";
+        }else{
+          return parent::render($request, $exception);
+        }
+       // return parent::render($request, $exception);
     }
 }

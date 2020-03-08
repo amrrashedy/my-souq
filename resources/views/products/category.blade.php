@@ -140,9 +140,10 @@
             </div>
             <!-- Card Body -->
             <div class="card-body">
-              
-
-
+              @if (session()->has("qry_error_message"))
+                    Can't Delete Category
+              @endif
+           
            {{-- get all category--}}
              <div class="row">
              @forelse (\App\category::all() as $cat)               

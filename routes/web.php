@@ -91,3 +91,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+Route::get("/ttt" ,function(){
+    test_test();
+});
+
+
+Route::fallback(function () {
+    return view("404");
+ });

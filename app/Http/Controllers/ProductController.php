@@ -13,14 +13,20 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //$products = product::get();
-        $products = product::orderBy("id" ,"desc")->paginate(20);
+
+        $limit =20;
+        $page = $request->input('page');
+        $num =num_row($page ,$limit);
+
+        $products = product::orderBy("id" ,"desc")->paginate($limit);
 
         return view('products.show_all' )
        // ->with("prods" , $products)
-       ->with(compact("products"));
+       ->with(compact("products"))
+       ->with("num" , $num);
     }
 
     /**
